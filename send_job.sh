@@ -11,6 +11,6 @@ echo "Starting run at: `date`"
 
 module load python/3.10.2
 
-srun python Tesina.py
+srun python Tesina_cluster.py
 
 echo "Job finished with exit code $? at: `date`"
