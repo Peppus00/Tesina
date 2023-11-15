@@ -91,7 +91,7 @@ from torch.utils.data import DataLoader
 # Parametri di training senza early stopping
 training_args = TrainingArguments(
     output_dir='./results',
-    num_train_epochs=50,
+    num_train_epochs=500,
     per_device_train_batch_size=4,
     per_device_eval_batch_size=64,
     warmup_steps=100,
