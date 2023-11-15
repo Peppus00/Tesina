@@ -131,8 +131,8 @@ trainer = Trainer(
     compute_metrics=compute_metrics
 )
 
-# Implementazione manuale dell'early stopping
-best_loss = None
+# Implementazione manuale dell'early stopping basato su F1
+best_f1 = None
 patience = 3
 patience_counter = 0
 
@@ -140,16 +140,16 @@ for epoch in range(training_args.num_train_epochs):
     trainer.train()
     eval_results = trainer.evaluate()
     
-    eval_loss = eval_results["eval_loss"]
+    eval_f1 = eval_results["eval_f1"]  # Assicurati che 'eval_f1' sia il nome corretto
     
-    if best_loss is None or eval_loss < best_loss:
-        best_loss = eval_loss
+    if best_f1 is None or eval_f1 > best_f1:  # Confronto basato su F1
+        best_f1 = eval_f1
         patience_counter = 0
     else:
         patience_counter += 1
     
     if patience_counter >= patience:
-        print(f"Stopping early at epoch {epoch+1}")
+        print(f"Stopping early based on F1 score at epoch {epoch+1}")
         break
 
 # Funzione per trovare la soglia ottimale
