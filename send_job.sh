@@ -9,8 +9,8 @@
 echo "Current working directory: `pwd`"
 echo "Starting run at: `date`"
 
-module load python/3.8.5
+module load python/3.10.2
 
-srun python Tesina_cluster.py
+srun python Tesina.py
 
 echo "Job finished with exit code $? at: `date`"
